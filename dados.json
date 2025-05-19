@@ -1,0 +1,20 @@
+{
+  "1" : {
+    "idCliente" : 1,
+    "nome" : "Gustavo Duarte Falcão",
+    "email" : "duartegusfalcao@gmail.com",
+    "idade" : 20
+  },
+  "2" : {
+    "idCliente" : 2,
+    "nome" : "Roberto Jassinto Norego",
+    "email" : "robert@gmail.com",
+    "idade" : 20
+  },
+  "3" : {
+    "idCliente" : 3,
+    "nome" : "Ana Roddriguez",
+    "email" : "aninha@gmail.com",
+    "idade" : 26
+  }
+}
