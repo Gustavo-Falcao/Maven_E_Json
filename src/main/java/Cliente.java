@@ -31,4 +31,11 @@ public class Cliente {
     public int getIdCliente() {
         return idCliente;
     }
+
+    public void mostrarInfoCliente() {
+        System.out.println("ID: " + getIdCliente());
+        System.out.println("Nome: " + getNome());
+        System.out.println("Email: " + getEmail());
+        System.out.println("Iade: " + getIdade());
+    }
 }

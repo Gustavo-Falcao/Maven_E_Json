@@ -11,42 +11,39 @@ public class Main {
     private static final String nomeArquivo = "dados.json";
 
     public static void main(String[] args) {
-        Map<String, Cliente> mapClientes = new LinkedHashMap<>();
 
-        Cliente c1 = new Cliente(1, "Gustavo Duarte Falcão", "duartegusfalcao@gmail.com", 20);
-        Cliente c2 = new Cliente(2, "Roberto Jassinto Norego", "robert@gmail.com", 20);
-        Cliente c3 = new Cliente(3, "Ana Roddriguez", "aninha@gmail.com", 26);
 
-        mapClientes.put(String.valueOf(c1.getIdCliente()), c1);
-        mapClientes.put(String.valueOf(c2.getIdCliente()), c2);
-        mapClientes.put(String.valueOf(c3.getIdCliente()), c3);
+        //Cliente c1 = new Cliente(1, "Gustavo Duarte Falcão", "duartegusfalcao@gmail.com", 20);
+        //Cliente c2 = new Cliente(2, "Roberto Jassinto Norego", "robert@gmail.com", 20);
+        //Cliente c3 = new Cliente(3, "Ana Roddriguez", "aninha@gmail.com", 26);
 
-        inserirDadosNoJson(mapClientes);
+        //mapClientes.put(String.valueOf(c1.getIdCliente()), c1);
+        //mapClientes.put(String.valueOf(c2.getIdCliente()), c2);
+        //mapClientes.put(String.valueOf(c3.getIdCliente()), c3);
 
-        //lerClientesNoJason();
+        //inserirDadosNoJson(mapClientes);
+
+        lerClientesNoJason();
     }
 
-//    public static void lerClientesNoJason() {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        File arquivo = new File(nomeArquivo);
-//
-//        if(!arquivo.exists()) {
-//            System.out.println("ERRO -> Arquvio não encontrado");
-//        }
-//
-//        try{
-//            Map<String,Cliente> clientesLidos = objectMapper.readValue(nomeArquivo, Map.class);
-//            System.out.println("Dados lidos do Arquivo Json");
-//            for(Map.Entry<String,Cliente> entry : clientesLidos.entrySet()) {
-//                String id = entry.getKey();
-//                Cliente cliente = entry.getValue();
-//                System.out.println("ID: " + id + "Cliente: " + cliente);
-//            }
-//         }catch (Exception e) {
-//            System.out.println("Errro ao ler o arquivo " + e.getMessage());
-//        }
-//
-//    }
+    public static void lerClientesNoJason() {
+        Map<String, Cliente> mapClientes;
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try{
+            mapClientes = objectMapper.readValue(new File(nomeArquivo), objectMapper.getTypeFactory().constructMapType(LinkedHashMap.class, String.class, Cliente.class));
+            System.out.println("Dados lidos do Arquivo Json");
+            for(String id : mapClientes.keySet()) {
+                mapClientes.get(id).mostrarInfoCliente();
+                System.out.println("\n");
+            }
+            mapClientes.remove("2");
+            inserirDadosNoJson(mapClientes);
+         }catch (Exception e) {
+            System.out.println("Errro ao ler o arquivo " + e.getMessage());
+        }
+
+    }
 
     public static void inserirDadosNoJson(Map<String,Cliente> clienteMap) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -57,7 +54,7 @@ public class Main {
             System.out.println("Dados gravados em " + nomeArquivo);
         }catch (Exception e) {
             System.out.println("Errou ao escrever os dados no Jason");
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
     }
 
