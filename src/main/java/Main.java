@@ -33,29 +33,31 @@ public class Main {
         try{
             mapClientes = objectMapper.readValue(new File(nomeArquivo), objectMapper.getTypeFactory().constructMapType(LinkedHashMap.class, String.class, Cliente.class));
             System.out.println("Dados lidos do Arquivo Json");
-            for(String id : mapClientes.keySet()) {
-                mapClientes.get(id).mostrarInfoCliente();
-                System.out.println("\n");
+            for(Map.Entry<String,Cliente> entry : mapClientes.entrySet()) {
+                entry.getValue().mostrarInfoCliente();
             }
-            mapClientes.remove("2");
-            inserirDadosNoJson(mapClientes);
+            System.out.println("HashMap sem formatar: " + mapClientes);
+            System.out.println();
+            System.out.println("Conjunto: " + mapClientes.entrySet());
+            //mapClientes.remove("2");
+            //inserirDadosNoJson(mapClientes);
          }catch (Exception e) {
             System.out.println("Errro ao ler o arquivo " + e.getMessage());
         }
 
     }
 
-    public static void inserirDadosNoJson(Map<String,Cliente> clienteMap) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // Deixar o arquivo Json formatado com quebras de linha
-
-        try{
-            objectMapper.writeValue(new File(nomeArquivo), clienteMap);
-            System.out.println("Dados gravados em " + nomeArquivo);
-        }catch (Exception e) {
-            System.out.println("Errou ao escrever os dados no Jason");
-            System.out.println(e.getMessage());
-        }
-    }
+//    public static void inserirDadosNoJson(Map<String,Cliente> clienteMap) {
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // Deixar o arquivo Json formatado com quebras de linha
+//
+//        try{
+//            objectMapper.writeValue(new File(nomeArquivo), clienteMap);
+//            System.out.println("Dados gravados em " + nomeArquivo);
+//        }catch (Exception e) {
+//            System.out.println("Errou ao escrever os dados no Jason");
+//            System.out.println(e.getMessage());
+//        }
+//    }
 
 }
