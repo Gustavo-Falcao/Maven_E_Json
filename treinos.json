@@ -1,0 +1,14 @@
+{
+  "K1" : {
+    "idTreino" : 12,
+    "inicioTreino" : "Aquecimento leve de 15 minutos + Alongamento de pernas com 10 minutos de duração",
+    "meioTreino" : "5 tiros de 200 metros + Intervalos de 5 minutos",
+    "finalTreino" : "Corrida leve com duração de 20 minutos",
+    "aluno" : {
+      "idCliente" : 1,
+      "nome" : "Gustavo Duarte Falcão",
+      "email" : "duartegusfalcao@gmail.com",
+      "idade" : 20
+    }
+  }
+}

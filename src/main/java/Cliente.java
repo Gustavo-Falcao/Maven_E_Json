@@ -5,8 +5,7 @@ public class Cliente {
     private String email;
     private int idade;
 
-    public Cliente() {
-
+    public Cliente(){
     }
 
     public Cliente(int idCliente, String nome, String email, int idade) {

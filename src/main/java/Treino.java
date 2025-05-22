@@ -1,14 +1,20 @@
 public class Treino {
+    private int idTreino;
     private String inicioTreino;
     private String meioTreino;
     private String finalTreino;
-    private Cliente cliente;
+    private Cliente aluno;
 
-    public Treino(String inicioTreino, String meioTreino, String finalTreino, Cliente cliente) {
+    public Treino(int idTreino, String inicioTreino, String meioTreino, String finalTreino, Cliente aluno) {
+        this.idTreino = idTreino;
         this.inicioTreino = inicioTreino;
         this.meioTreino = meioTreino;
         this.finalTreino = finalTreino;
-        this.cliente = cliente;
+        this.aluno = aluno;
+    }
+
+    public int getIdTreino() {
+        return idTreino;
     }
 
     public String getInicioTreino() {
@@ -23,7 +29,16 @@ public class Treino {
         return finalTreino;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Cliente getAluno() {
+        return aluno;
+    }
+
+    public void mostrarInfoTreino() {
+        System.out.println("Id: " + getIdTreino());
+        System.out.println("Inicion: " + getInicioTreino());
+        System.out.println("Meiio: " + getMeioTreino());
+        System.out.println("Final: " + getFinalTreino());
+        System.out.println("Aluno");
+        getAluno().mostrarInfoCliente();
     }
 }
